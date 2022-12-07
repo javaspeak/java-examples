@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.testng.Assert;
 import org.testng.TestListenerAdapter;
 import org.testng.TestNG;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 /**
@@ -16,10 +17,17 @@ public class SynchronizedMethodExampleTest {
 
     private Logger logger = LoggerFactory.getLogger( SynchronizedMethodExampleTest.class );
 
+    private SynchronizedMethodExample example;
+
+    @BeforeClass
+    public void setup() {
+
+        example = new SynchronizedMethodExampleImpl();
+    }
+
     @Test
     public void doTest() throws InterruptedException {
 
-        SynchronizedMethodExample example = new SynchronizedMethodExampleImpl();
         CountDownLatch latch = new CountDownLatch( 3 );
         
         Thread[] threads = new Thread[3];

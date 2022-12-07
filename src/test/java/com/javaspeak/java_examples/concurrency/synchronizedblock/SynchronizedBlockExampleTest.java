@@ -7,21 +7,27 @@ import org.slf4j.LoggerFactory;
 import org.testng.Assert;
 import org.testng.TestListenerAdapter;
 import org.testng.TestNG;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-
-import com.javaspeak.java_examples.concurrency.synchronizedmethod.SynchronizedMethodExampleTest;
 
 /**
  * @author John Dickerson - 27 Nov 2022
  */
 public class SynchronizedBlockExampleTest {
 
-    private Logger logger = LoggerFactory.getLogger( SynchronizedMethodExampleTest.class );
+    private Logger logger = LoggerFactory.getLogger( SynchronizedBlockExampleTest.class );
+
+    private SynchronizedBlockExample example;
+
+    @BeforeClass
+    public void setup() {
+
+        example = new SychnronizedBlocExampleImpl();
+    }
 
     @Test
     public void doTest() throws InterruptedException {
 
-        SynchronizedBlockExample example = new SychnronizedBlocExampleImpl();
         CountDownLatch latch = new CountDownLatch( 6 );
 
         Thread[] threads = new Thread[6];
