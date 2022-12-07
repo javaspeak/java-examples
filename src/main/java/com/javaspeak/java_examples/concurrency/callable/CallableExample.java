@@ -8,4 +8,8 @@ package com.javaspeak.java_examples.concurrency.callable;
  */
 public interface CallableExample {
 
+    Integer updateState( Integer amountToAdd );
+
+
+    Integer getState();
 }
