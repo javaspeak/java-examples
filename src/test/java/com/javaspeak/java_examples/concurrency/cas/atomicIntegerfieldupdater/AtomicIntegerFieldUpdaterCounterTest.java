@@ -11,6 +11,8 @@ import java.util.concurrent.CountDownLatch;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.Assert;
+import org.testng.TestListenerAdapter;
+import org.testng.TestNG;
 import org.testng.annotations.Test;
 
 /**
@@ -178,5 +180,15 @@ public class AtomicIntegerFieldUpdaterCounterTest {
                 Assert.assertEquals( counterReadingsIterator.next(), Integer.valueOf( j + 1 ) );
             }
         }
+    }
+
+
+    public static void main( String[] args ) {
+
+        TestListenerAdapter tla = new TestListenerAdapter();
+        TestNG testng = new TestNG();
+        testng.setTestClasses( new Class[] { AtomicIntegerFieldUpdaterCounterTest.class } );
+        testng.addListener( tla );
+        testng.run();
     }
 }
