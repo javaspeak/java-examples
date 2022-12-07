@@ -55,6 +55,7 @@ public class CallableExampleTest {
         
         for ( Future<Integer> future: futures ) {
             
+            // The get method blocks until the callable has returned its value
             Integer state = future.get();
             logger.info( "state = " + state );
 
