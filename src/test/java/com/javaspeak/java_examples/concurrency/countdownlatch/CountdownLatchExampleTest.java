@@ -78,7 +78,7 @@ public class CountdownLatchExampleTest {
         }
 
         // this prevents other tasks being run but lets existing scheduled ones finish
-        // If this is not called before awaitTermination awairw
+        // If this is not called before awaitTermination will not work
         executorService.shutdown();
 
         boolean terminatedWithoutTimeout =
