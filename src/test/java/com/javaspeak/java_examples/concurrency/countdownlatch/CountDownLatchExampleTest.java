@@ -17,15 +17,15 @@ import org.testng.annotations.Test;
 /**
  * @author John Dickerson - 2 Dec 2022
  */
-public class CountdownLatchExampleTest {
+public class CountDownLatchExampleTest {
 
-    private CountdownLatchExample example;
-    private Logger logger = LoggerFactory.getLogger( CountdownLatchExampleTest.class );
+    private CountDownLatchExample example;
+    private Logger logger = LoggerFactory.getLogger( CountDownLatchExampleTest.class );
 
     @BeforeClass
     public void setup() {
 
-        example = new CountdownLatchExampleImpl();
+        example = new CountDownLatchExampleImpl();
     }
 
     @Test
@@ -95,7 +95,7 @@ public class CountdownLatchExampleTest {
 
         TestListenerAdapter tla = new TestListenerAdapter();
         TestNG testng = new TestNG();
-        testng.setTestClasses( new Class[] { CountdownLatchExampleTest.class } );
+        testng.setTestClasses( new Class[] { CountDownLatchExampleTest.class } );
         testng.addListener( tla );
         testng.run();
     }

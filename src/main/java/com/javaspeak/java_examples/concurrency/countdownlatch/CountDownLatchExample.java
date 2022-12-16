@@ -5,14 +5,14 @@ import java.util.concurrent.CountDownLatch;
 /**
  * @author John Dickerson - 2 Dec 2022
  */
-public interface CountdownLatchExample {
+public interface CountDownLatchExample {
 
-    void updateSharedState( CountDownLatch countdownLatch, int amountToIncrement );
+    void updateSharedState( CountDownLatch countDownLatch, int amountToIncrement );
 
 
     int getSharedState();
 
 
-    void doubleSharedStateAfterOtherThreadsComplete( CountDownLatch countdownLatch )
+    void doubleSharedStateAfterOtherThreadsComplete( CountDownLatch countDownLatch )
             throws InterruptedException;
 }

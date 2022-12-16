@@ -8,9 +8,9 @@ import org.slf4j.LoggerFactory;
 /**
  * @author John Dickerson - 2 Dec 2022
  */
-public class CountdownLatchExampleImpl implements CountdownLatchExample {
+public class CountDownLatchExampleImpl implements CountDownLatchExample {
 
-    private Logger logger = LoggerFactory.getLogger( CountdownLatchExampleImpl.class );
+    private Logger logger = LoggerFactory.getLogger( CountDownLatchExampleImpl.class );
 
     private volatile int sharedState = 0;
 
