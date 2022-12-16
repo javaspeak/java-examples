@@ -6,6 +6,8 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
 import org.testng.Assert;
+import org.testng.TestListenerAdapter;
+import org.testng.TestNG;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -76,5 +78,15 @@ public class BlockOnGetMapTest {
         blockOnGetMap.put( 3l, "Only this should remain" );
         
         Assert.assertEquals( blockOnGetMap.getEntryCount().intValue(), 1 );
+    }
+
+
+    public static void main( String[] args ) {
+
+        TestListenerAdapter tla = new TestListenerAdapter();
+        TestNG testng = new TestNG();
+        testng.setTestClasses( new Class[] { BlockOnGetMapTest.class } );
+        testng.addListener( tla );
+        testng.run();
     }
 }
