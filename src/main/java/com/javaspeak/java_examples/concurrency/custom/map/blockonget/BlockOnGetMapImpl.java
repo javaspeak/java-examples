@@ -1,4 +1,4 @@
-package com.javaspeak.java_examples.concurrency.custom.map;
+package com.javaspeak.java_examples.concurrency.custom.map.blockonget;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -132,7 +132,23 @@ public class BlockOnGetMapImpl<K, V> implements BlockOnGetMap<K, V> {
                     return value;
                 }
 
-                k.wait( timeoutMilli );
+                long start = System.nanoTime();
+
+                while ( true ) {
+
+                    long now = System.nanoTime();
+                    long diff = now - start;
+                    long diffMilli = diff / 1000000;
+                    long remainingMilli = timeoutMilli - diffMilli;
+
+                    k.wait( remainingMilli );
+
+                    if ( remainingMilli < 0 ) {
+
+                        break;
+                    }
+                }
+
                 value = valueMap.get( monitor );
                 return value;
             }

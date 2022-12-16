@@ -1,4 +1,4 @@
-package com.javaspeak.java_examples.concurrency.custom.map;
+package com.javaspeak.java_examples.concurrency.custom.map.blockonget;
 
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
