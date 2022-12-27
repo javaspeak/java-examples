@@ -2,6 +2,7 @@ package com.javaspeak.java_examples.concurrency.lock.stampedlock;
 
 import java.util.concurrent.ExecutionException;
 
+import org.testng.Assert;
 import org.testng.TestListenerAdapter;
 import org.testng.TestNG;
 import org.testng.annotations.BeforeClass;
@@ -12,17 +13,24 @@ import org.testng.annotations.Test;
  */
 public class StampedLockExampleTest {
 
-    private StampedLockExample example;
+    private StampedLockExample stampedLockExample;
 
     @BeforeClass
     public void setup() {
 
-        example = new StampedLockExampleImpl();
+        stampedLockExample = new StampedLockExampleImpl();
     }
+
 
     @Test
     public void doTest() throws InterruptedException, ExecutionException {
 
+        stampedLockExample.put( "greeting", "hello" );
+
+        String greeting =
+                stampedLockExample.tryReadWithOptimisticLockFirst( "greeting" );
+
+        Assert.assertEquals( greeting, "hello" );
     }
 
 
