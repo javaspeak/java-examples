@@ -19,7 +19,7 @@ public class ReentrantLockWithConditionTest {
     @BeforeClass
     public void setUp() {
 
-        reentrantLockWithCondition = new ReentrantLockWithCondition( CAPACITY );
+        reentrantLockWithCondition = new ReentrantLockWithConditionImpl( CAPACITY );
     }
 
 
